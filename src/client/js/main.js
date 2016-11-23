@@ -1,5 +1,3 @@
-(function () { console.log('sanity check!'); })();
-
 $('#create-poll').on('submit', (event) => {
   event.preventDefault();
   const options = {
@@ -9,10 +7,13 @@ $('#create-poll').on('submit', (event) => {
     dataType: 'json'
   };
   $.ajax(options)
-  .done((data) => {
-    console.log(data);
+  .done((res) => {
+    const link = `<a href="/api/v1/polls/${res.data}">here</a>`;
+    $('#question').val('');
+    $('#create-poll').hide();
+    $('#message').html(`Thanks. You can view your poll ${link}.`);
   })
   .fail((err) => {
-    console.log(err);
+    $('#message').html('Something bad happened. Try again.');
   });
 });

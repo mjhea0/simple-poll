@@ -14,9 +14,10 @@ describe('routes : index', () => {
       chai.request(server)
       .get('/')
       .end((err, res) => {
-        res.redirects.length.should.equal(0);
-        res.status.should.equal(200);
-        res.type.should.equal('text/html');
+        should.not.exist(err);
+        res.redirects.length.should.eql(0);
+        res.status.should.eql(200);
+        res.type.should.eql('text/html');
         res.text.should.contain('<h2 class="text-center">Create a new poll</h2>');
         done();
       });
@@ -28,9 +29,10 @@ describe('routes : index', () => {
       chai.request(server)
       .get('/404')
       .end((err, res) => {
-        res.redirects.length.should.equal(0);
-        res.status.should.equal(404);
-        res.type.should.equal('application/json');
+        should.exist(err);
+        res.redirects.length.should.eql(0);
+        res.status.should.eql(404);
+        res.type.should.eql('application/json');
         res.body.message.should.eql('Not Found');
         done();
       });

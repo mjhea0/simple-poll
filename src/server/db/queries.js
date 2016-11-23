@@ -1,7 +1,15 @@
 const knex = require('./connection');
 
+function getSinglePoll(pollID) {
+  return knex('polls').where('id', pollID).first();
+}
+
 function addPoll(obj) {
   return knex('polls').insert(obj).returning('*');
+}
+
+function getVotes(pollID) {
+  return knex('votes').where('poll_id', pollID).first();
 }
 
 function addVote(pollID) {
@@ -9,6 +17,8 @@ function addVote(pollID) {
 }
 
 module.exports = {
+  getSinglePoll,
   addPoll,
+  getVotes,
   addVote
 };

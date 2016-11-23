@@ -58,7 +58,7 @@
   "validateIndentation": 2,
   "excludeFiles": [
     "node_modules/**",
-    "coverage/*",
+    ".coverage/*",
     "build/client/*"
   ]
 }

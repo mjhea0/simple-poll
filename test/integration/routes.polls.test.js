@@ -7,12 +7,14 @@ chai.use(chaiHttp);
 
 const server = require('../../src/server/app');
 const knex = require('../../src/server/db/connection');
+const queries = require('../../src/server/db/queries');
 
 describe('routes : polls', () => {
 
   beforeEach(() => {
     return knex.migrate.rollback()
-    .then(() => { return knex.migrate.latest(); });
+    .then(() => { return knex.migrate.latest(); })
+    .then(() => { return knex.seed.run(); });
   });
   afterEach(() => {
     return knex.migrate.rollback();
@@ -30,7 +32,7 @@ describe('routes : polls', () => {
         res.status.should.eql(200);
         res.type.should.eql('application/json');
         res.body.status.should.eql('success');
-        res.body.data.should.eql(1);
+        res.body.data.should.be.eql(2);
         res.body.message.should.eql('Poll created');
         res.body.should.be.instanceof(Object);
         done();
@@ -48,6 +50,66 @@ describe('routes : polls', () => {
         res.type.should.eql('application/json');
         res.body.status.should.eql('error');
         res.body.message.should.eql('A question is required');
+        done();
+      });
+    });
+  });
+
+  describe('GET api/v1/polls/:id', () => {
+    it('should return a poll', () => {
+      return queries.addVote(1)
+      .then(() => {
+        chai.request(server)
+        .get('/api/v1/polls/1')
+        .end((err, res) => {
+          should.not.exist(err);
+          res.redirects.length.should.eql(0);
+          res.status.should.eql(200);
+          res.type.should.eql('application/json');
+          res.body.status.should.eql('success');
+          res.body.data.poll.should.eql(1);
+          res.body.data.question.should.eql('Do you like Python?');
+          res.body.data.votes.yes.should.eql(0);
+          res.body.data.votes.no.should.eql(0);
+          res.body.message.should.eql('Poll found');
+          res.body.should.be.instanceof(Object);
+        });
+      });
+    });
+    it('should throw an error if there are no votes', (done) => {
+      chai.request(server)
+      .get('/api/v1/polls/1')
+      .end((err, res) => {
+        should.exist(err);
+        res.redirects.length.should.eql(0);
+        res.status.should.eql(500);
+        res.type.should.eql('application/json');
+        res.body.status.should.eql('error');
+        done();
+      });
+    });
+    it('should throw an error if the poll does not exit', (done) => {
+      chai.request(server)
+      .get('/api/v1/polls/9999')
+      .end((err, res) => {
+        should.exist(err);
+        res.redirects.length.should.eql(0);
+        res.status.should.eql(500);
+        res.type.should.eql('application/json');
+        res.body.status.should.eql('error');
+        done();
+      });
+    });
+    it('should throw an error if the :id is not an integer', (done) => {
+      chai.request(server)
+      .get('/api/v1/polls/jhdsdsjh')
+      .end((err, res) => {
+        should.exist(err);
+        res.redirects.length.should.eql(0);
+        res.status.should.eql(400);
+        res.type.should.eql('application/json');
+        res.body.status.should.eql('error');
+        res.body.message.should.eql('An ID is required');
         done();
       });
     });
