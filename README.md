@@ -1,7 +1,7 @@
 # Straw Poll
 
-ADD Build Status
-ADD coverage Status
+[![Build Status](https://travis-ci.org/mjhea0/straw-poll.svg?branch=master)](https://travis-ci.org/mjhea0/straw-poll)
+[![Coverage Status](https://coveralls.io/repos/github/mjhea0/straw-poll/badge.svg?branch=master)](https://coveralls.io/github/mjhea0/straw-poll?branch=master)
 
 Straw Poll is a basic polling app, for thumbing up or down.
 
