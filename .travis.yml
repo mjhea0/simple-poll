@@ -3,6 +3,18 @@ language:
 node_js:
 - '7'
 - '6'
+- '5'
+services:
+- postgresql
+addons:
+  postgresql: '9.6'
 env:
   global:
   - NODE_ENV=test
+before_script:
+- psql -c 'create database straw_poll_test;' -U postgres
+- npm install -g istanbul
+script:
+- npm run test
+after_script:
+- npm run coveralls
