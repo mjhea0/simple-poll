@@ -13,9 +13,9 @@ env:
   - NODE_ENV=test
 before_script:
 - psql -c 'create database straw_poll_test;' -U postgres
-- npm install -g istanbul
 script:
 - npm run test
 after_script:
-- npm install -g coveralls
+- npm install istanbul
+- npm install coveralls
 - npm run coveralls
