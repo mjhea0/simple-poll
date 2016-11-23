@@ -3,7 +3,7 @@
 ADD Build Status
 ADD coverage Status
 
-Straw Poll is a basic polling app.
+Straw Poll is a basic polling app, for thumbing up or down.
 
 ## Getting Started
 

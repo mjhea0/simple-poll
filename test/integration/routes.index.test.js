@@ -9,14 +9,6 @@ const server = require('../../src/server/app');
 
 describe('routes : index', () => {
 
-  beforeEach((done) => {
-    done();
-  });
-
-  afterEach((done) => {
-    done();
-  });
-
   describe('GET /', () => {
     it('should render the index', (done) => {
       chai.request(server)
@@ -25,7 +17,7 @@ describe('routes : index', () => {
         res.redirects.length.should.equal(0);
         res.status.should.equal(200);
         res.type.should.equal('text/html');
-        res.text.should.contain('<h1>Welcome to Express!</h1>');
+        res.text.should.contain('<h2 class="text-center">Create a new poll</h2>');
         done();
       });
     });
