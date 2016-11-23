@@ -16,9 +16,17 @@ function addVote(pollID) {
   return knex('votes').insert({ poll_id: parseInt(pollID) }).returning('*');
 }
 
+function updateVote(pollID, type) {
+  return knex('votes')
+  .increment(type, 1)
+  .where('poll_id', parseInt(pollID))
+  .returning('*');
+}
+
 module.exports = {
   getSinglePoll,
   addPoll,
   getVotes,
-  addVote
+  addVote,
+  updateVote
 };

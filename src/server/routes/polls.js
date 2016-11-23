@@ -65,7 +65,34 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:id/vote', (req, res, next) => {
-  res.json('test');
+  const pollID = parseInt(req.params.id);
+  if (isNaN(pollID)) {
+    return res.status(400).json({
+      status: 'error',
+      message: 'An ID is required'
+    });
+  }
+  const type = req.body.type;
+  return queries.updateVote(pollID, type)
+  .then((votes) => {
+    if (!votes.length) { throw new Error('Something went wrong'); }
+    const data = {};
+    data.votes = {
+      yes: votes[0].yes,
+      no: votes[0].no
+    };
+    return res.status(200).json({
+      status: 'success',
+      message: 'Poll updated',
+      data: data
+    });
+  })
+  .catch((err) => {
+    return res.status(500).json({
+      status: 'error',
+      message: 'Something went wrong'
+    });
+  });
 });
 
 module.exports = router;
