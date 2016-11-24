@@ -1,8 +1,8 @@
 exports.up = (knex, Promise) => {
   return knex.schema.createTable('votes', (table) => {
     table.increments();
-    table.integer('yes').notNullable().defaultTo(0);
-    table.integer('no').notNullable().defaultTo(0);
+    table.integer('yay').notNullable().defaultTo(0);
+    table.integer('nay').notNullable().defaultTo(0);
     table.integer('poll_id').references('id').inTable('polls').notNullable();
   });
 };

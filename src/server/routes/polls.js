@@ -22,8 +22,8 @@ router.get('/:id', (req, res, next) => {
   .then((votes) => {
     if (!votes) { throw new Error('Something went wrong'); }
     data.votes = {
-      yes: votes.yes,
-      no: votes.no
+      yay: votes.yay,
+      nay: votes.nay
     };
     return res.status(200).json({
       status: 'success',
@@ -78,8 +78,8 @@ router.put('/:id/vote', (req, res, next) => {
     if (!votes.length) { throw new Error('Something went wrong'); }
     const data = {};
     data.votes = {
-      yes: votes[0].yes,
-      no: votes[0].no
+      yay: votes[0].yay,
+      nay: votes[0].nay
     };
     return res.status(200).json({
       status: 'success',

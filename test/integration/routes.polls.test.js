@@ -34,8 +34,8 @@ describe('routes : polls', () => {
           res.body.status.should.eql('success');
           res.body.data.poll.should.eql(1);
           res.body.data.question.should.eql('Do you like Python?');
-          res.body.data.votes.yes.should.eql(0);
-          res.body.data.votes.no.should.eql(0);
+          res.body.data.votes.yay.should.eql(0);
+          res.body.data.votes.nay.should.eql(0);
           res.body.message.should.eql('Poll found');
           res.body.should.be.instanceof(Object);
         });
@@ -121,15 +121,15 @@ describe('routes : polls', () => {
       .then(() => {
         chai.request(server)
         .put('/api/v1/polls/1/vote')
-        .send({ type: 'yes' })
+        .send({ type: 'yay' })
         .end((err, res) => {
           should.not.exist(err);
           res.redirects.length.should.eql(0);
           res.status.should.eql(200);
           res.type.should.eql('application/json');
           res.body.status.should.eql('success');
-          res.body.data.votes.yes.should.eql(1);
-          res.body.data.votes.no.should.eql(0);
+          res.body.data.votes.yay.should.eql(1);
+          res.body.data.votes.nay.should.eql(0);
           res.body.message.should.eql('Poll updated');
           res.body.should.be.instanceof(Object);
         });
@@ -166,7 +166,7 @@ describe('routes : polls', () => {
     it('should throw an error if the poll does not exit', (done) => {
       chai.request(server)
       .put('/api/v1/polls/9999/vote')
-      .send({ type: 'yes' })
+      .send({ type: 'yay' })
       .end((err, res) => {
         should.exist(err);
         res.redirects.length.should.eql(0);
@@ -179,7 +179,7 @@ describe('routes : polls', () => {
     it('should throw an error if the :id is not an integer', (done) => {
       chai.request(server)
       .put('/api/v1/polls/jhdsdsjh/vote')
-      .send({ type: 'yes' })
+      .send({ type: 'yay' })
       .end((err, res) => {
         should.exist(err);
         res.redirects.length.should.eql(0);
