@@ -46,7 +46,7 @@ describe('routes : index', () => {
           res.redirects.length.should.eql(0);
           res.status.should.eql(200);
           res.type.should.eql('text/html');
-          res.text.should.contain('<h2>Do you like Python?</h2>');
+          res.text.should.contain('Do you like Python?');
         });
       });
     });
