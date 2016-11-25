@@ -36,5 +36,4 @@ $ npm run coverage
 
 ## Images
 
-![example 1](./images/1.png)
-![example 2](./images/2.png)
+<img src="./images/1.png" width="50%"/> <img src="./images/2.png" width="50%"/>
