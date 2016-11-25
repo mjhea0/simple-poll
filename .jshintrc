@@ -13,7 +13,8 @@
     "waitsFor": false,
     "runs": false,
     "$": false,
-    "confirm": false
+    "confirm": false,
+    "Cookies": false
   },
   "esnext": true,
   "node" : true,

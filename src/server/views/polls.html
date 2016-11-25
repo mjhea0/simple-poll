@@ -6,7 +6,7 @@
 
   <div class="row text-center">
     <div class="col-sm-4 col-sm-offset-4">
-      <h2>{{question}}</h2>
+      <h2 id="question" data-id="{{poll}}">{{question}}</h2>
       <hr><br>
       <button type="button" class="btn btn-success glyphicon glyphicon-thumbs-up" data-id="{{poll}}" data-type="yay" data-loading-text=" ...">&nbsp;{{votes.yay}}</button>
       <button type="button" class="btn btn-success glyphicon glyphicon-thumbs-down" data-id="{{poll}}" data-type="nay" data-loading-text=" ...">&nbsp;{{votes.nay}}</button>
@@ -16,5 +16,13 @@
       <h4 id="message"></h4>
     </div>
   </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.3/js.cookie.min.js">
+  </script>
+<script type="text/javascript" src="/js/polls.js"></script>
 
 {% endblock %}

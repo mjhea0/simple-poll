@@ -81,6 +81,8 @@ router.put('/:id/vote', (req, res, next) => {
       yay: votes[0].yay,
       nay: votes[0].nay
     };
+    const cookie = createCookie(req, votes[0].poll_id);
+    res.cookie('straw', cookie, { maxAge: 900000 });
     return res.status(200).json({
       status: 'success',
       message: 'Poll updated',
@@ -94,5 +96,12 @@ router.put('/:id/vote', (req, res, next) => {
     });
   });
 });
+
+function createCookie(req, pollID) {
+  let cookie = req.cookies.straw;
+  if (cookie)  cookie += `,${pollID}`;
+  else cookie = pollID;
+  return cookie;
+}
 
 module.exports = router;
