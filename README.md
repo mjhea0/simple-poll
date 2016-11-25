@@ -33,3 +33,8 @@ $ npm run coverage
 
 1. Test socket.io
 1. e2e tests
+
+## Images
+
+![]('./images/1.png')
+![]('./images/2.png')
