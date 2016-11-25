@@ -31,6 +31,6 @@ $ npm run coverage
 
 ## Todo
 
-1. Add sockets for real time updates
+1. Test sockets
 1. Deploy to heroku
 1. e2e tests
