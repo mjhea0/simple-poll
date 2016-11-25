@@ -1,3 +1,5 @@
+const socket = io().connect();
+
 $(function() {
 
   $('#message').html('');
@@ -6,6 +8,11 @@ $(function() {
     $('button').prop('disabled', true);
     $('#message').html('You\'ve already voted. Thanks!');
   }
+
+  socket.on('voted', (data) => {
+    $('#yay-button').html(`&nbsp;${data.yay}`);
+    $('#nay-button').html(`&nbsp;${data.nay}`);
+  });
 
 });
 

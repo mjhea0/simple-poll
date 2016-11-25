@@ -7,6 +7,15 @@ app.set('port', port);
 
 const server = http.createServer(app);
 
+// *** socket.io *** //
+global.io = require('socket.io')(server);
+global.io.sockets.on('connection', function(socket) {
+  socket.join(socket.handshake.headers.referer);
+  socket.on('disconnect', function() {
+    socket.leave(socket.handshake.headers.referer);
+  });
+});
+
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

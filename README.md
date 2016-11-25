@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/mjhea0/straw-poll.svg?branch=master)](https://travis-ci.org/mjhea0/straw-poll)
 [![Coverage Status](https://coveralls.io/repos/github/mjhea0/straw-poll/badge.svg?branch=master)](https://coveralls.io/github/mjhea0/straw-poll?branch=master)
 
-Straw Poll is a basic polling app, for thumbing up or down.
+Straw Poll is a basic, real-time polling app, for thumbing up or down.
 
 ## Getting Started
 
@@ -31,7 +31,6 @@ $ npm run coverage
 
 ## Todo
 
-1. Add unit tests
 1. Add sockets for real time updates
 1. Deploy to heroku
 1. e2e tests

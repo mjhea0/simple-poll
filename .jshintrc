@@ -14,7 +14,8 @@
     "runs": false,
     "$": false,
     "confirm": false,
-    "Cookies": false
+    "Cookies": false,
+    "io": false
   },
   "esnext": true,
   "node" : true,
