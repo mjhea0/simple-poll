@@ -31,6 +31,5 @@ $ npm run coverage
 
 ## Todo
 
-1. Test sockets
-1. Deploy to heroku
+1. Test socket.io
 1. e2e tests
