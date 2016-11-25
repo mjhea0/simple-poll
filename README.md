@@ -36,5 +36,5 @@ $ npm run coverage
 
 ## Images
 
-![]('./images/1.png')
-![]('./images/2.png')
+![example 1](./images/1.png)
+![example 2](./images/2.png)
