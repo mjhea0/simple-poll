@@ -1,4 +1,4 @@
-const databaseName = 'straw';
+const databaseName = 'chant';
 
 module.exports = {
   development: {
