@@ -1,4 +1,4 @@
-const databaseName = 'straw_poll';
+const databaseName = 'straw';
 
 module.exports = {
   development: {
