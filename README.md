@@ -5,8 +5,6 @@
 
 Chant is a real-time polling app for binary decisions.
 
-<img src="./images/2.png" width="30%">
-
 ## Getting Started
 
 1. Fork/Clone
