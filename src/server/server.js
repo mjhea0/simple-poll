@@ -1,20 +1,10 @@
-const app = require('./app');
+const app = require('./app').app;
+const server = require('./app').server;
 const debug = require('debug')('herman-express:server');
 const http = require('http');
 
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-
-const server = http.createServer(app);
-
-// *** socket.io *** //
-global.io = require('socket.io')(server);
-global.io.sockets.on('connection', function(socket) {
-  socket.join(socket.handshake.headers.referer);
-  socket.on('disconnect', function() {
-    socket.leave(socket.handshake.headers.referer);
-  });
-});
 
 server.listen(port);
 server.on('error', onError);

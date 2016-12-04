@@ -31,7 +31,5 @@ $ npm run coverage
 
 ## Todo
 
-1. Rebrand
-1. Test socket.io
 1. e2e tests
 1. Add auth, remove cookie

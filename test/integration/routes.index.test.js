@@ -5,7 +5,7 @@ const should = chai.should();
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
-const server = require('../../src/server/app');
+const server = require('../../src/server/app').server;
 const knex = require('../../src/server/db/connection');
 const queries = require('../../src/server/db/queries');
 
