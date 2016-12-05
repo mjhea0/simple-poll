@@ -1,6 +1,6 @@
 # Chant
 
-[![Build Status](https://travis-ci.org/mjhea0/straw-poll.svg?branch=master)](https://travis-ci.org/mjhea0/straw-poll)
+[![Build Status](https://travis-ci.org/mjhea0/chant.svg?branch=master)](https://travis-ci.org/mjhea0/chant)
 [![Coverage Status](https://coveralls.io/repos/github/mjhea0/straw-poll/badge.svg?branch=master)](https://coveralls.io/github/mjhea0/straw-poll?branch=master)
 
 Chant is a real-time polling app for binary decisions.
