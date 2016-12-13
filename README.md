@@ -31,5 +31,5 @@ $ npm run coverage
 
 ## Todo
 
-1. e2e tests
-1. Add auth, remove cookie
+1. Add jsdom tests
+1. Remove cookie, add localstorage
