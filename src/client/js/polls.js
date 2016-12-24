@@ -3,8 +3,8 @@ const socket = io().connect();
 $(function() {
 
   $('#message').html('');
-  const cookie = getCookies();
-  if (cookie)  {
+  const local = checkLocalStorage();
+  if (local)  {
     $('button').prop('disabled', true);
     $('#message').html('You\'ve already voted. Thanks!');
   }
@@ -15,17 +15,6 @@ $(function() {
   });
 
 });
-
-function getCookies() {
-  if (Cookies.get('straw')) {
-    const pollID = parseInt($('#question').attr('data-id'));
-    const cookieArray = Cookies.get('straw').split(',');
-    for (let id of cookieArray) {
-      if (parseInt(id) === pollID) return true;
-    }
-  }
-  return false;
-}
 
 // handle up/down vote
 $('body').on('click', 'button', function() {
@@ -47,6 +36,7 @@ $('body').on('click', 'button', function() {
     if (type === 'yay') self.html(`&nbsp;${res.data.votes.yay}`);
     else if (type === 'nay') self.html(`&nbsp;${res.data.votes.nay}`);
     $('#message').html('Thanks for voting.');
+    updateLocalStorage(pollID);
   })
   .fail((err) => {
     // handle error
@@ -54,3 +44,30 @@ $('body').on('click', 'button', function() {
     $('#message').html('Something bad happened. Try again.');
   });
 });
+
+function checkLocalStorage() {
+  const data = localStorage.getItem('chant');
+  if (data) {
+    const pollID = parseInt($('#question').attr('data-id'));
+    const dataArray = data.split(',');
+    for (let id of data) {
+      if (parseInt(id) === pollID) return true;
+    }
+    return false;
+  }
+  return false;
+}
+
+function updateLocalStorage(pollID) {
+  const data = localStorage.getItem('chant');
+  if (data) {
+    const dataArray = data.split(',');
+    for (let id of data) {
+      if (parseInt(id) === pollID) return;
+    }
+    dataArray.push(pollID.toString());
+    localStorage.setItem('chant', dataArray);
+  } else {
+    localStorage.setItem('chant', pollID);
+  }
+}
