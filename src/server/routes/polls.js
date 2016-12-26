@@ -82,8 +82,9 @@ router.put('/:id/vote', (req, res, next) => {
       yay: votes[0].yay,
       nay: votes[0].nay
     };
-    const cookie = helpers.createCookie(req, votes[0].poll_id);
-    res.cookie('straw', cookie, { maxAge: 900000 });
+    // using localStorage instead of cookies
+    // const cookie = helpers.createCookie(req, votes[0].poll_id);
+    // res.cookie('straw', cookie, { maxAge: 900000 });
     res.io.sockets.in(req.headers.referer).emit('voted',  data.votes);
     return res.status(200).json({
       status: 'success',

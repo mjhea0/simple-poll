@@ -13,7 +13,7 @@ Chant is a real-time polling app for binary decisions.
 1. Create two local Postgres databases - `chant` and `chant_test`
 1. Migrate - `knex migrate:latest --env development`
 1. Seed - `knex seed:run --env development`
-1. Run the development server - `gulp`
+1. Run the development server - `gulp` (`http://127.0.0.1:3000/`)
 
 ## Test
 
