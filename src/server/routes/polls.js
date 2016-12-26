@@ -47,6 +47,12 @@ router.post('/', (req, res, next) => {
       message: 'A question is required'
     });
   }
+  if (typeof req.body.question !== 'string') {
+    return res.status(400).json({
+      status: 'error',
+      message: 'Question must be a string'
+    });
+  }
   return queries.addPoll(req.body)
   .then((poll) => { return queries.addVote(parseInt(poll[0].id)); })
   .then((votes) => {

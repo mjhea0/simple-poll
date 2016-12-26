@@ -113,6 +113,21 @@ describe('routes : polls', () => {
         done();
       });
     });
+    it('should not add a poll if the question is not a string', (done) => {
+      const poll = { question: true };
+      chai.request(server)
+      .post('/api/v1/polls')
+      .send(poll)
+      .end((err, res) => {
+        should.exist(err);
+        res.redirects.length.should.eql(0);
+        res.status.should.eql(400);
+        res.type.should.eql('application/json');
+        res.body.status.should.eql('error');
+        res.body.message.should.eql('Question must be a string');
+        done();
+      });
+    });
   });
 
   describe('PUT api/v1/polls/:id/vote', () => {
