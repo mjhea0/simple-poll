@@ -47,6 +47,7 @@ describe('routes : index', () => {
           res.status.should.eql(200);
           res.type.should.eql('text/html');
           res.text.should.contain('Do you like Python?');
+          res.text.should.not.contain('You\'ve already voted. Thanks!');
         });
       });
     });
