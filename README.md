@@ -31,5 +31,4 @@ $ npm run coverage
 
 ## Todo
 
-1. Add jsdom tests
 1. Convert to full poll, where users can add topics and fields
