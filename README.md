@@ -1,9 +1,9 @@
-# Chant
+# Simple Poll
 
-[![Build Status](https://travis-ci.org/mjhea0/chant.svg?branch=master)](https://travis-ci.org/mjhea0/chant)
+[![Build Status](https://travis-ci.org/mjhea0/simple-poll.svg?branch=master)](https://travis-ci.org/mjhea0/simple-poll)
 [![Coverage Status](https://coveralls.io/repos/github/mjhea0/straw-poll/badge.svg?branch=master)](https://coveralls.io/github/mjhea0/straw-poll?branch=master)
 
-Chant is a real-time polling app for binary decisions.
+Simple Poll is a real-time polling app for binary decisions.
 
 ## Getting Started
 
@@ -28,7 +28,3 @@ With code coverage:
 ```sh
 $ npm run coverage
 ```
-
-## Todo
-
-1. Convert to full poll, where users can add topics and fields
