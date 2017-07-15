@@ -3,7 +3,7 @@ const databaseName = 'chant';
 module.exports = {
   development: {
     client: 'postgresql',
-    connection: `postgres://localhost:5432/${databaseName}`,
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: __dirname + '/src/server/db/migrations'
     },
@@ -13,7 +13,7 @@ module.exports = {
   },
   test: {
     client: 'postgresql',
-    connection: `postgres://localhost:5432/${databaseName}_test`,
+    connection: process.env.DATABASE_TEST_URL,
     migrations: {
       directory: __dirname + '/src/server/db/migrations'
     },

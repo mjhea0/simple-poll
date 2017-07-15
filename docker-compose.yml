@@ -1,0 +1,33 @@
+version: '2.1'
+
+services:
+
+  db:
+    container_name: db
+    build: ./src/server/db
+    ports:
+      - '5433:5432' # expose ports - HOST:CONTAINER
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: exit 0
+
+  app:
+    container_name: app
+    build: ./
+    volumes:
+      - '.:/usr/src/app'
+      - './package.json:/usr/src/app/package.json'
+    ports:
+      - '1337:3000' # expose ports - HOST:CONTAINER
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/chant
+      - DATABASE_TEST_URL=postgres://postgres:postgres@db:5432/chant_test
+      - NODE_ENV=${NODE_ENV}
+      - TOKEN_SECRET=changeme
+    depends_on:
+      db:
+        condition: service_healthy
+    links:
+      - db

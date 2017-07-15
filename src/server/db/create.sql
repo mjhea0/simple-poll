@@ -1,0 +1,2 @@
+CREATE DATABASE chant;
+CREATE DATABASE chant_test;
