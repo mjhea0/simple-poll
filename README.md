@@ -1,7 +1,7 @@
 # Simple Poll
 
 [![Build Status](https://travis-ci.org/mjhea0/simple-poll.svg?branch=master)](https://travis-ci.org/mjhea0/simple-poll)
-[![Coverage Status](https://coveralls.io/repos/github/mjhea0/straw-poll/badge.svg?branch=master)](https://coveralls.io/github/mjhea0/straw-poll?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/mjhea0/simple-poll/badge.svg?branch=master)](https://coveralls.io/github/mjhea0/simple-poll?branch=master)
 
 Simple Poll is a real-time polling app for binary decisions.
 
