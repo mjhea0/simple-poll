@@ -1,20 +1,29 @@
 language:
-- node_js
+  - node_js
+
 node_js:
-- '7'
-- '6'
+  - '8'
+  - '7'
+  - '6'
+
 services:
-- postgresql
+  - postgresql
+
 addons:
   postgresql: '9.4'
+
 env:
   global:
-  - NODE_ENV=test
+    - NODE_ENV=test
+    - export DATABASE_TEST_URL=postgresql://localhost/chant_test
+
 before_script:
-- psql -c 'create database chant_test;' -U postgres
+  - psql -c 'create database chant_test;' -U postgres
+
 script:
-- npm run test
+  - npm run test
+
 after_script:
-- npm install istanbul
-- npm install coveralls
-- npm run coveralls
+  - npm install istanbul
+  - npm install coveralls
+  - npm run coveralls
